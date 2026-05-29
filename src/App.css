@@ -1,38 +1,329 @@
-.App {
+body {
+  margin: 0;
+  font-family: Arial;
+} 
+
+/* LOGIN */
+ .login {
   text-align: center;
+  margin-top: 100px;
+  background-color: #cc0000;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.login input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 250px;
+  
+} 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* HEADER */
+ .header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: #131921;
+  color: white;
+  padding: 10px 20px;
+}
+
+.search {
+  width: 40%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.header-right {
+  display: flex;
+  gap: 10px;
+} 
+
+/* PRODUCTS */
+ .products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background: #eaeded;
+} 
+
+ .product {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product:hover {
+  transform: scale(1.03);
+}
+
+.product img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+} 
+
+/*  REAL AMAZON BUTTON */
+ .product button {
+  background: #ffd814;
+  border: 1px solid #f0c14b;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.product button:hover {
+  background: #f7ca00;
+}
+
+.product button:active {
+  transform: scale(0.97);
+} 
+
+/* CART */
+ .cart {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+} 
+
+/* DARK MODE */
+.dark {
+  background: #121212;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dark .products {
+  background: #1e1e1e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.dark .product,
+.dark .cart {
+  background: #2a2a2a;
+} 
+
+/* RESPONSIVE */
+ @media (max-width: 992px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+
+  .search {
+    width: 60%;
   }
+} 
+
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+/* COMMON BUTTON BASE */
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+/*  LOGIN BUTTON (AMAZON STYLE PREMIUM) */
+.login-btn {
+  width: 100%;
+  background: linear-gradient(180deg, #ffd814, #f7ca00);
+  border: 1px solid #f0c14b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.login-btn:hover {
+  background: linear-gradient(180deg, #f7ca00, #e6b800);
+  transform: translateY(-1px);
+}
+
+.login-btn:active {
+  transform: scale(0.97);
+}
+
+/* 🚪 LOGOUT BUTTON (MODERN RED) */
+.logout-btn {
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff1a1a, #990000);
+  transform: translateY(-1px);
+}
+
+.logout-btn:active {
+  transform: scale(0.96);
+}
+
+/*  DARK MODE TOGGLE BUTTON */
+.toggle-btn {
+  background: #232f3e;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background: #37475a;
+}
+
+/* LOGIN PAGE (if not already added) */
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #232f3e, #37475a);
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+
+
+/* INPUT GROUP (ICON + INPUT) */
+.input-group {
+  position: relative;
+  margin: 15px 0;
+}
+
+.input-group input {
+  width: 80%;
+  padding: 12px 12px 12px 40px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  background: #f9f9f9;
+}
+
+/* ICON */
+.input-group .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+}
+
+/* FOCUS EFFECT (REAL WORLD GLOW) */
+.input-group input:focus {
+  border-color: #ff9900;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
+}
+
+/* HOVER EFFECT */
+.input-group input:hover {
+  border-color: #999;
+}
+
+/* DARK MODE SUPPORT */
+.dark .input-group input {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+.dark .input-group input:focus {
+  border-color: #ff9900;
+  box-shadow: 0 0 8px rgba(255, 153, 0, 0.6);
+}
+
+/* CART ITEM LAYOUT */
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+/* QUANTITY BOX */
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.qty-btn {
+  padding: 5px 10px;
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/*  REMOVE BUTTON (MODERN RED STYLE) */
+.remove-btn {
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.remove-btn:hover {
+  background: linear-gradient(135deg, #ff1a1a, #990000);
+  transform: translateY(-1px);
+}
+
+.remove-btn:active {
+  transform: scale(0.96);
+}
+
+/* DARK MODE SUPPORT */
+.dark .remove-btn {
+  background: linear-gradient(135deg, #ff3333, #990000);
+}
+
+
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #131921;
+  color: white;
+  font-size: 14px;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* DARK MODE */
+.dark .footer {
+  background: #000;
 }
